@@ -8,7 +8,7 @@ export const styles = StyleSheet.create({
     // height: '100%',
     // flexDirection: 'row',
     flex: 1,
-    backgroundColor: 'steelblue',
+    backgroundColor: '#ca2c37',
   },
   kotak: {
     backgroundColor: 'yellow',
