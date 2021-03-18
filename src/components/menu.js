@@ -1,5 +1,5 @@
 import React from 'react';
-
+import {Icon} from 'react-native-elements';
 import {View, Text} from 'react-native';
 
 export const MenuIcon = props => {
@@ -12,7 +12,13 @@ export const MenuIcon = props => {
         alignItems: 'center',
         // backgroundColor: 'pink',
       }}>
-      <Text>{props.data}</Text>
+      <Icon
+        name={props.data.name}
+        color={props.data.color}
+        // style={{fontSize: 100}}
+        size={30}
+      />
+      <Text>{props.data.text}</Text>
     </View>
   );
 };
