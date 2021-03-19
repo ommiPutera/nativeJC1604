@@ -18,7 +18,7 @@ import {
 import {Icon, Badge, ListItem} from 'react-native-elements';
 import {styles} from './src/styles';
 import {MenuIcon} from './src/components';
-
+import axios from 'axios';
 const windowWidth = Dimensions.get('screen').width;
 const windowHeight = Dimensions.get('screen').height;
 const wait = timeout => {
@@ -33,6 +33,14 @@ const App = () => {
   const onRefresh = React.useCallback(() => {
     setRefreshing(true);
     wait(2000).then(() => setRefreshing(false)); //! bisa diganti dengan axios
+  }, []);
+
+  useEffect(() => {
+    axios
+      .get(`https://my-json-server.typicode.com/dino9611/mockdata/products`)
+      .then(res => {
+        console.log(res.data);
+      });
   }, []);
   const [data] = useState([
     {
