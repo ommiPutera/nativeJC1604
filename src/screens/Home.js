@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   SafeAreaView,
   ScrollView,
@@ -9,6 +9,9 @@ import {
   View,
   Platform,
   RefreshControl,
+  ToastAndroid,
+  Alert,
+  BackHandler,
   TouchableWithoutFeedback,
 } from 'react-native';
 import {Icon, Badge, ListItem} from 'react-native-elements';
@@ -60,11 +63,39 @@ const Home = props => {
       text: 'love',
     },
   ]);
-  const [page, setpage] = useState('home');
 
-  const onMenuPress = page => {
-    setpage(page);
+  const [back, setback] = useState(0);
+
+  const backAction = () => {
+    //using alert
+    // Alert.alert('Hold on!', 'Are you sure you want to go back?', [
+    //   {
+    //     text: 'Cancel',
+    //     onPress: () => ,
+    //     style: 'cancel',
+    //   },
+    //   {text: 'YES', onPress: () => BackHandler.exitApp()},
+    // ]);
+
+    // using toast
+    if (back === 0) {
+      setback(1);
+      ToastAndroid.show('1 click back again if you wanna back', 3000);
+    } else {
+      BackHandler.exitApp();
+    }
+    console.log(back);
+
+    return true; //jangan lupa returnnya true
   };
+
+  useEffect(() => {
+    BackHandler.addEventListener('hardwareBackPress', backAction);
+
+    return () =>
+      BackHandler.removeEventListener('hardwareBackPress', backAction);
+  }); //component didmount
+  // console.log(back);
 
   const OnReimbursePress = () => {
     props.navigation.push('Reim');

@@ -1,42 +1,13 @@
 import React from 'react';
-import {View, Text, Button} from 'react-native';
+import {View} from 'react-native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Home from '../screens/Home';
+import NewsScreen from '../screens/newsscreen';
+import Userscreen from '../screens/usersscreen';
+import Bookscreen from '../screens/bookscreen';
 import {Icon, Badge} from 'react-native-elements';
 
 const BottomTab = createBottomTabNavigator();
-
-function NewsScreen({navigation, route}) {
-  // tanpa destructuring props.route
-  return (
-    <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-      <Text>News Screen {route.params?.id}</Text>
-    </View>
-  );
-}
-function Bookscreen({navigation, route}) {
-  // tanpa destructuring props.route
-  return (
-    <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-      <Text>Books Screen </Text>
-    </View>
-  );
-}
-function Userscreen({navigation, route}) {
-  // tanpa destructuring props.route
-  return (
-    <View
-      style={{
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-        backgroundColor: 'white',
-      }}>
-      <Text>User Screen </Text>
-      <Button title="buka drawer" onPress={() => navigation.openDrawer()} />
-    </View>
-  );
-}
 
 const HomeTab = () => {
   return (
